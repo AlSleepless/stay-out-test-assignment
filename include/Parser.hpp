@@ -1,3 +1,14 @@
+/**
+ * @file Parser.hpp
+ * @author AlBessonov (bessonov853@gmail.com)
+ * @brief Заголовок парсера
+ * @version 0.1
+ * @date 2026-09-14
+ *
+ * @copyright Copyright (c) 2026
+ *
+ */
+
 #pragma once
 
 #include "Person.hpp"
