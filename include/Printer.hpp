@@ -14,6 +14,6 @@ namespace stayout {
  * @param os поток вывода
  * @param people массив персон для вывода
  */
-void print(std::ostream &os, std::vector<Person> people);
+void print(std::ostream &os, std::vector<Person> &people);
 
 } // namespace stayout
