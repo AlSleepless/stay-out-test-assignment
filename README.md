@@ -4,6 +4,7 @@
 * Дата: 14.09.2026
 * Версия: 1.0
 * ТЗ: [test-assignment.pdf](test-assignment.pdf)
+* Проверка автором проводилась на Ubuntu 7.0.0-30-generic
 
 ## Требования
 
