@@ -31,6 +31,14 @@ public:
   std::vector<Person> loadFromFile(std::string_view path) const;
 
   /**
+   * @brief получить персон из потока ввода
+   *
+   * @param iStream поток ввода
+   * @return std::vector<Person>
+   */
+  std::vector<Person> loadFromStream(std::istream &iStream) const;
+
+  /**
    * @brief разбор строки на структуры персон
    *
    * @param line строка для разбора
