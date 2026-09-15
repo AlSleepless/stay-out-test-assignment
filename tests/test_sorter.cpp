@@ -9,9 +9,8 @@
  *
  */
 
-#include <gtest/gtest.h>
-
 #include "Sorter.hpp"
+#include <gtest/gtest.h>
 
 using namespace stayout;
 
