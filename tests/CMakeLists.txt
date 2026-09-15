@@ -14,7 +14,7 @@ add_executable(stayout_utests
     test_sorter.cpp
     test_printer.cpp
 )
-target_link_libraries(stayout_utests PRIVATE stalker_core GTest::gtest_main
+target_link_libraries(stayout_utests PRIVATE stayout_core GTest::gtest_main
 )
 
 include(GoogleTest)

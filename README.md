@@ -27,5 +27,5 @@ cmake --build .
 ```
 
 ```bash
-./tests/stalker_tests
+ctest --output-on-failure
 ```
