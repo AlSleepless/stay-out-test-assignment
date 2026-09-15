@@ -1,7 +1,7 @@
 /**
  * @file Sorter.cpp
  * @author AlSleepless (bessonov853@gmail.com)
- * @brief
+ * @brief реализация системы сортировки
  * @version 0.1
  * @date 2026-09-15
  *
