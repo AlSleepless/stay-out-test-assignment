@@ -21,10 +21,14 @@ namespace stayout {
 
 /**
  * @brief Вывести массив персон
+ * @todo сделать опции форматов вывода (firstNameFirst, lastNameFirst,
+ * phoneNumberFirst)
  *
  * @param os поток вывода
- * @param people массив персон для вывода
+ * @param people массив персон для вывода (копия!)
+ * @param option метод сортировки
  */
-void print(std::ostream &os, std::vector<Person> &people);
+void printSorted(std::ostream &os, const std::vector<Person> people,
+                 const SortOption option);
 
 } // namespace stayout
