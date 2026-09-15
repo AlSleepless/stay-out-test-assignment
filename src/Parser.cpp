@@ -55,10 +55,10 @@ bool Parser::parseLine(std::string_view line, Person &out) {
   return true;
 }
 
-std::vector<Person> Parser::loadFromStream(std::istream &iStream) const {
+std::vector<Person> Parser::loadFromStream(std::istream &is) const {
   std::vector<Person> people;
   std::string line;
-  while (std::getline(iStream, line)) {
+  while (std::getline(is, line)) {
     Person person;
     if (parseLine(line, person)) {
       people.push_back(std::move(person));

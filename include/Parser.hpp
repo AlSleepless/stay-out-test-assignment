@@ -33,10 +33,10 @@ public:
   /**
    * @brief получить персон из потока ввода
    *
-   * @param iStream поток ввода
+   * @param is поток ввода
    * @return std::vector<Person>
    */
-  std::vector<Person> loadFromStream(std::istream &iStream) const;
+  std::vector<Person> loadFromStream(std::istream &is) const;
 
   /**
    * @brief разбор строки на структуры персон

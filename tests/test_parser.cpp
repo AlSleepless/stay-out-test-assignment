@@ -60,9 +60,9 @@ TEST(ParseLineTest, InvalidNumber) {
 
 TEST(ParserStream, Valid) {
   Parser parser;
-  std::istringstream iStream(
+  std::istringstream is(
       "Дегтярёв Александр: 0123456789\nСоколов Алексей: 987654321\n");
-  auto people = parser.loadFromStream(iStream);
+  auto people = parser.loadFromStream(is);
 
   ASSERT_EQ(people.size(), 2u);
   EXPECT_EQ(people[0].lastName, "Дегтярёв");
@@ -70,16 +70,16 @@ TEST(ParserStream, Valid) {
 
 TEST(ParserStream, InvalidLineSkip) {
   Parser parser;
-  std::istringstream iStream(
+  std::istringstream is(
       "Дегтярёв Александр: 0123456789\n\nСоколов Алексей: 987654321\n");
-  auto people = parser.loadFromStream(iStream);
+  auto people = parser.loadFromStream(is);
   EXPECT_EQ(people.size(), 2u);
 }
 
 TEST(ParserStream, InvalidEmpty) {
   Parser parser;
-  std::istringstream iStream("");
-  EXPECT_TRUE(parser.loadFromStream(iStream).empty());
+  std::istringstream is("");
+  EXPECT_TRUE(parser.loadFromStream(is).empty());
 }
 
 // load from file
