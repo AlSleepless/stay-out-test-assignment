@@ -1,6 +1,6 @@
 /**
  * @file Parser.hpp
- * @author AlBessonov (bessonov853@gmail.com)
+ * @author AlSleepless (bessonov853@gmail.com)
  * @brief Заголовок парсера
  * @version 0.1
  * @date 2026-09-14

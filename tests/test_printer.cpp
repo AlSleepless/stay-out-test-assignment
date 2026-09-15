@@ -1,6 +1,6 @@
 /**
  * @file test_printer.hpp
- * @author AlBessonov (bessonov853@gmail.com)
+ * @author AlSleepless (bessonov853@gmail.com)
  * @brief Модульные тесты на систему вывода информации
  * @version 0.1
  * @date 2026-09-14

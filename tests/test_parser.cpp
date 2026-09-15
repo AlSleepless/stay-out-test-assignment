@@ -1,6 +1,6 @@
 /**
  * @file test_parser.hpp
- * @author AlBessonov (bessonov853@gmail.com)
+ * @author AlSleepless (bessonov853@gmail.com)
  * @brief Модульные тесты на парсер. Для корректной работы запускать через ctest
  * @version 0.1
  * @date 2026-09-14
