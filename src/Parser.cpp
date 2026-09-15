@@ -10,6 +10,7 @@
  */
 
 #include "Parser.hpp"
+#include <algorithm>
 #include <cerrno>
 #include <cstring>
 #include <fstream>
@@ -30,6 +31,12 @@ bool Parser::parseLine(std::string_view line, Person &out) {
   auto phoneNumber = line.substr(colonPos + 2);
   if (phoneNumber.empty())
     return false; // нет номера телефона
+
+  const bool allDigits =
+      std::all_of(phoneNumber.begin(), phoneNumber.end(),
+                  [](unsigned char ch) { return std::isdigit(ch) != 0; });
+  if (!allDigits)
+    return false; // номер телефона содержит не только цифры
 
   const auto spacePos = fullName.find(' ');
   if (spacePos == std::string_view::npos)
