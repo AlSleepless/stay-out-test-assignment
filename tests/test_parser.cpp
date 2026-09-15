@@ -50,6 +50,12 @@ TEST(ParseLineTest, InvalidThirdName) {
       Parser::parseLine("Дегтярёв Александр Вячеславович: 0123456789", person));
 }
 
+TEST(ParseLineTest, InvalidNumber) {
+  Person person;
+  EXPECT_FALSE(Parser::parseLine("Дегтярёв Александр Вячеславович: 0123456789A",
+                                 person));
+}
+
 // load from stream
 
 TEST(ParserStream, Valid) {
