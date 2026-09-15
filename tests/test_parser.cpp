@@ -1,7 +1,7 @@
 /**
  * @file test_parser.hpp
  * @author AlBessonov (bessonov853@gmail.com)
- * @brief Модульные тесты на парсер
+ * @brief Модульные тесты на парсер. Для корректной работы запускать через ctest
  * @version 0.1
  * @date 2026-09-14
  *
@@ -16,38 +16,75 @@ using namespace stayout;
 
 // parse line
 
-TEST(ParserTest, ValidLine) {
-  Person p;
-  ASSERT_TRUE(Parser::parseLine("Бессонов Александр: 0123456789", p));
-  EXPECT_EQ(p.lastName, "Бессонов");
-  EXPECT_EQ(p.firstName, "Александр");
-  EXPECT_EQ(p.phoneNumber, "0123456789");
+TEST(ParseLineTest, Valid) {
+  Person person;
+  ASSERT_TRUE(Parser::parseLine("Дегтярёв Александр: 0123456789", person));
+  EXPECT_EQ(person.lastName, "Дегтярёв");
+  EXPECT_EQ(person.firstName, "Александр");
+  EXPECT_EQ(person.phoneNumber, "0123456789");
 }
 
-TEST(ParserTest, InvalidLineEmpty) {
-  Person p;
-  EXPECT_FALSE(Parser::parseLine("", p));
+TEST(ParseLineTest, InvalidEmpty) {
+  Person person;
+  EXPECT_FALSE(Parser::parseLine("", person));
 }
 
-TEST(ParserTest, InvalidLineNoSpaces) {
-  Person p;
-  EXPECT_FALSE(Parser::parseLine("БессоновАлександр:0123456789", p));
+TEST(ParseLineTest, InvalidNoSpaces) {
+  Person person;
+  EXPECT_FALSE(Parser::parseLine("БессоновАлександр:0123456789", person));
 }
 
-TEST(ParserTest, InvalidLineNoColon) {
-  Person p;
-  EXPECT_FALSE(Parser::parseLine("Бессонов Александр 0123456789", p));
+TEST(ParseLineTest, InvalidNoColon) {
+  Person person;
+  EXPECT_FALSE(Parser::parseLine("Дегтярёв Александр 0123456789", person));
 }
 
-TEST(ParserTest, InvalidLineNoPhone) {
-  Person p;
-  EXPECT_FALSE(Parser::parseLine("Бессонов Александр: ", p));
+TEST(ParseLineTest, InvalidNoPhone) {
+  Person person;
+  EXPECT_FALSE(Parser::parseLine("Дегтярёв Александр: ", person));
 }
 
-TEST(ParserTest, InvalidLineThirdName) {
-  Person p;
+TEST(ParseLineTest, InvalidThirdName) {
+  Person person;
   EXPECT_FALSE(
-      Parser::parseLine("Бессонов Александр Вячеславович: 0123456789", p));
+      Parser::parseLine("Дегтярёв Александр Вячеславович: 0123456789", person));
 }
 
-// TODO load from file
+// load from stream
+
+TEST(ParserStream, Valid) {
+  Parser parser;
+  std::istringstream iStream(
+      "Дегтярёв Александр: 0123456789\nСоколов Алексей: 987654321\n");
+  auto people = parser.loadFromStream(iStream);
+
+  ASSERT_EQ(people.size(), 2u);
+  EXPECT_EQ(people[0].lastName, "Дегтярёв");
+}
+
+TEST(ParserStream, InvalidLineSkip) {
+  Parser parser;
+  std::istringstream iStream(
+      "Дегтярёв Александр: 0123456789\n\nСоколов Алексей: 987654321\n");
+  auto people = parser.loadFromStream(iStream);
+  EXPECT_EQ(people.size(), 2u);
+}
+
+TEST(ParserStream, InvalidEmpty) {
+  Parser parser;
+  std::istringstream iStream("");
+  EXPECT_TRUE(parser.loadFromStream(iStream).empty());
+}
+
+// load from file
+
+TEST(ParserFile, Valid) {
+  Parser parser;
+  auto people = parser.loadFromFile("data/input.txt");
+  EXPECT_THROW(parser.loadFromFile("invalidPath.txt"), std::runtime_error);
+}
+
+TEST(ParserFile, ThrowsOnMissingFile) {
+  Parser parser;
+  EXPECT_THROW(parser.loadFromFile("invalidPath.txt"), std::runtime_error);
+}
