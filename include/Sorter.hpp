@@ -30,6 +30,6 @@ enum class SortOption : std::uint8_t {
  * @param people массив для сортировки
  * @param option вариант сортировки
  */
-void sortPeople(std::vector<Person> &people, SortOption option);
+void sortPeople(std::vector<Person> &people, const SortOption option);
 
 } // namespace stayout
